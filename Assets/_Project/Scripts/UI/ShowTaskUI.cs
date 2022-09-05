@@ -1,4 +1,3 @@
-
 using System;
 using TMPro;
 using UnityEngine;
@@ -18,9 +17,10 @@ public class ShowTaskUI : MonoBehaviour
     {
         try
         {
-            if (PersistentManager.infoManager._session.phobiaLVL > 2) phobiaLevel = 2;
-            else phobiaLevel = PersistentManager.infoManager._session.phobiaLVL;
-                
+            if (PersistentManager.infoManager._session.phobiaLVL > 2) 
+                phobiaLevel = 2;
+            else 
+                phobiaLevel = PersistentManager.infoManager._session.phobiaLVL;
         }
         catch (Exception e)
         {
@@ -40,7 +40,7 @@ public class ShowTaskUI : MonoBehaviour
 
     void LoadStrings(StringTable stringTable)
     {
-        finalText = GetLocalizedString(stringTable, "Task2");
+        finalText = GetLocalizedString(stringTable, "Task" + phobiaLevel);
         Debug.Log(finalText);
         ChangeTextMeshpro();
     }

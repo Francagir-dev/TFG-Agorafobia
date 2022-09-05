@@ -13,8 +13,10 @@ public class Constants
 
     #region SERVER INFO
 
-    public const string SERVER_IP = "http://192.168.0.28/backendtfg";
+    public const string SERVER_IP = "http://192.168.0.18/backendtfg";
+    public const string backup = "http://192.168.0.28/backendtfg";
     public const string MOBILE_IP = "http://192.168.121.60/backendtfg";
+    public const string PORTATIL_IP = "http://192.168.121.60/backendtfg";
 
     #endregion
 }

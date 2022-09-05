@@ -24,7 +24,7 @@ public class CheckSessionID : MonoBehaviour
     }
 
    /// <summary>
-   /// Query to backend
+   /// Query to backend to check if code session is correct, in case affirmative backend will send patient's name, phobia, anxiety level, some IDs to make other queries easier 
    /// </summary>
    /// <param name="SessionCode">Code of session, introduced by patient</param>
    /// <param name="callback">Callback Function to receive JSON</param>
@@ -67,7 +67,7 @@ public class CheckSessionID : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Error");
+                    Debug.Log(www.downloadHandler.text);
                 }
                 
             }

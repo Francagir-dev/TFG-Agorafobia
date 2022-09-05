@@ -13,7 +13,9 @@ public class GetAllInfo : MonoBehaviour
     public TextMeshProUGUI patientName, patientPhobia;
     public GameObject uiInfo, btnYes,btnNo;
     
-    
+    /// <summary>
+    /// Function to Make the callback
+    /// </summary>
     public void CheckID()
     {
     _createSessionCallback = (jsonArrayString) =>
@@ -22,6 +24,11 @@ public class GetAllInfo : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Read Json from server, and assign to items
+    /// </summary>
+    /// <param name="jsonArrayString"></param>
+    /// <returns></returns>
     IEnumerator CheckSessionCode(string jsonArrayString)
     {
      
@@ -30,8 +37,7 @@ public class GetAllInfo : MonoBehaviour
 
         for (int i = 0; i < sessionINFO.Count; i++)
         {
-           
-            //string id = sessionINFO[i].AsObject["SessionCode"];
+            //Create a reference of Item to receive data. 
             JSONObject sessionInfo = sessionINFO[i] as JSONObject;
 
             //Fill info and activate items

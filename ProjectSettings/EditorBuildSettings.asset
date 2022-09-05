@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Project/Scenes/LobbyFinal.unity
+    guid: 05ac82ebf41152a45bc23dc0edb10270
+  - enabled: 1
+    path: Assets/_Project/Scenes/Agoraphobia.unity
+    guid: d03ff57bd3330734996df5c19830b89f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 398d945149746a94899cafbfeddf8c9f, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: eda54ecf4f7da944baeacb1c3493a69b, type: 2}
