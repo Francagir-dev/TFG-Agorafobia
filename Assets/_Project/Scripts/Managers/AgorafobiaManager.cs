@@ -8,10 +8,15 @@ public class AgorafobiaManager : MonoBehaviour
 {
 
     private float timeAgoraScene;
-    
 
 
-  
+    private void OnApplicationQuit()
+    {
+        timeAgoraScene = Time.timeSinceLevelLoad;
+        StartCoroutine(UpdateDatabaseInfo());
+        StartCoroutine(InsertTask());
+    }
+
     private void OnDisable()
     {
         timeAgoraScene = Time.timeSinceLevelLoad;

@@ -10,10 +10,11 @@ using Vector3 = UnityEngine.Vector3;
 public class EyeTrackingTrick : MonoBehaviour
 {
     //Raycast variables for colliding
-    [Header("RAYCAST VARIABLES ")]
-    [SerializeField] private LayerMask layerToCollide;
+    [Header("RAYCAST VARIABLES ")] [SerializeField]
+    private LayerMask layerToCollide;
+
     [Range(0, 10f)] public float maxDistanceToItem;
-    
+
     private ItemSeen _itemSeen;
     private bool isItemHitted;
     RaycastHit hit;
@@ -26,9 +27,11 @@ public class EyeTrackingTrick : MonoBehaviour
     float timeCount = 0f;
     private float distance;
     private List<ItemSeen> listItems = new List<ItemSeen>();
+
     private void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxDistanceToItem, layerToCollide))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
+                maxDistanceToItem, layerToCollide))
         {
             itemHited = hit.transform.gameObject; //Assign game object as item hit
             if (itemHited == null) return; // If there is not a item hited will start again
@@ -48,37 +51,35 @@ public class EyeTrackingTrick : MonoBehaviour
                 {
                     for (int i = 0; i < listItems.Count; i++)
                     {
-                    
                         if (listItems[i].name.Equals(hit.collider.gameObject.name))
                         {
                             _itemSeen = listItems[i];
-                 
                         }
                     }
                 }
-              
+
                 timeCount += Time.deltaTime;
                 timesHitted++;
                 name = hit.collider.gameObject.name;
                 distance = Vector3.Distance(transform.position, hit.collider.transform.position);
-                
+
                 Debug.Log(name);
             }
             else
             {
                 prevItem = itemHited;
-                if(_itemSeen == null)
-                    _itemSeen = new ItemSeen(PersistentManager.infoManager._session.sessionID, name, timeCount, distance, timesHitted);
-                
+                if (_itemSeen == null)
+                    _itemSeen = new ItemSeen(PersistentManager.infoManager._session.sessionID, name, timeCount,
+                        distance, timesHitted);
+
                 listItems.Add(_itemSeen);
-               
+
                 //reset items
                 name = "";
                 timeCount = 0.0f;
                 distance = 0f;
                 timesHitted = 0;
             }
-      
         }
         else
         {
@@ -88,7 +89,7 @@ public class EyeTrackingTrick : MonoBehaviour
 
     private void OnDisable()
     {
-        if(listItems.Count<=0) return;
+        if (listItems.Count <= 0) return;
         for (int i = 0; i < listItems.Count; i++)
         {
             StartCoroutine(InsertItem(listItems[i]));
@@ -98,7 +99,7 @@ public class EyeTrackingTrick : MonoBehaviour
     public IEnumerator InsertItem(ItemSeen item)
     {
         WWWForm form = new WWWForm();
-        
+
         //Add code to form
         form.AddField("sessionID", item.sessionID);
         form.AddField("itemName", item.name);
@@ -125,7 +126,6 @@ public class EyeTrackingTrick : MonoBehaviour
                 {
                     Debug.Log("Error");
                 }
-                
             }
         }
     }
